@@ -50,3 +50,16 @@ def send_commands():
         if cmd == 'quit':
             conn.close()
             s.close()
+            sys.exit()
+            if len(str.encode(cmd)) > 0:
+                conn.send(str.encode(cmd))
+                client_response = str(conn.recv(1024), "utf-8")
+                print(client_response, end="")
+
+        def main():
+            create_socket()
+            bind_socket()
+            socket_accept()
+
+        main()
+
